@@ -1320,7 +1320,8 @@
           </div>
 
           <div class="contact-form reveal">
-            <form id="contactForm" novalidate>
+            <form action="https://formspree.io/f/mvzwzbqk" method="POST">
+              <input type="hidden" name="_subject" value="New Project Inquiry from Stevex Concepts Website" />
               <div class="row">
                 <div>
                   <label for="name">Full Name</label>
@@ -1343,7 +1344,7 @@
               </div>
 
               <button type="submit" class="btn btn-primary">Send Project Inquiry</button>
-              <p class="form-message" id="formMessage">Complete the form and send your inquiry.</p>
+              <p class="form-message">Your message will be delivered directly to Stephen Olorunsola.</p>
             </form>
           </div>
         </div>
@@ -1373,8 +1374,6 @@
     const navLinks = document.getElementById("navLinks");
     const navAnchors = [...document.querySelectorAll(".nav-links a")];
     const sections = [...document.querySelectorAll("main section[id]")];
-    const form = document.getElementById("contactForm");
-    const formMessage = document.getElementById("formMessage");
 
     function setTheme(theme) {
       if (theme === "dark") {
@@ -1445,32 +1444,6 @@
     );
 
     sections.forEach((section) => sectionObserver.observe(section));
-
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const business = document.getElementById("business").value.trim();
-      const message = document.getElementById("message").value.trim();
-
-      if (!name || !email || !business || !message) {
-        formMessage.textContent = "Please complete all fields before sending.";
-        formMessage.style.color = "#d97706";
-        return;
-      }
-
-      const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-      if (!emailValid) {
-        formMessage.textContent = "Please enter a valid email address.";
-        formMessage.style.color = "#dc2626";
-        return;
-      }
-
-      formMessage.textContent = `Thanks, ${name}. Your inquiry is ready.`;
-      formMessage.style.color = "#059669";
-      form.reset();
-    });
   </script>
 </body>
 </html>
